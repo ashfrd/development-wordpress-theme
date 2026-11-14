@@ -1,0 +1,81 @@
+// Extended Bootstrap breakpoints (must be declared before Bootstrap variables).
+$grid-breakpoints: (
+  xxs: 0,
+  xs: 375px,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1440px,
+  xxxl: 1680px,
+  xxxxl: 1920px,
+  xxxxxl: 2560px
+);
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+);
+
+$enable-shadows: false;
+$enable-gradients: false;
+$enable-negative-margins: false;
+$enable-cssgrid: false;
+$enable-dark-mode: false;
+
+// Required Bootstrap configuration.
+
+@import 'bootstrap/scss/functions';
+@import 'bootstrap/scss/variables';
+@import 'bootstrap/scss/variables-dark';
+@import 'bootstrap/scss/maps';
+@import 'bootstrap/scss/mixins';
+@import 'bootstrap/scss/utilities';
+
+// Custom utility modifications.
+
+$utilities: map-get-multiple(
+  $utilities,
+  (
+    'align',
+    'display',
+    'order',
+    'flex',
+    'flex-direction',
+    'justify-content',
+    'align-items',
+    'margin',
+    'margin-x',
+    'margin-y',
+    'padding',
+    'padding-x',
+    'padding-y',
+    'text-align',
+    'position',
+    'width',
+    'object-fit'
+  )
+);
+
+// Import and generate Bootstrap utility classes.
+
+@import 'bootstrap/scss/root';
+@import 'bootstrap/scss/reboot';
+@import 'bootstrap/scss/type';
+@import 'bootstrap/scss/images';
+@import 'bootstrap/scss/containers';
+@import 'bootstrap/scss/grid';
+@import 'bootstrap/scss/helpers';
+@import 'bootstrap/scss/utilities/api';
+
+// Theme-specific styles.
+
+@import 'theme-colours';
+@import 'mixins';
+@import './theme/*.scss';
+
+// ACF flexible content layouts
+@import '../../../acf-layouts/**/layout.scss';

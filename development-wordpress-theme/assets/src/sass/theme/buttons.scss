@@ -1,0 +1,14 @@
+.button {
+  @include button-base;
+  &:hover {
+    text-decoration: none;
+  }
+  &--primary {
+    background-color: map-get($theme-colours, 'red');
+    color: map-get($theme-colours, 'white');
+    &:hover {
+      background-color: map-get($theme-colours, 'blue');
+      color: map-get($theme-colours, 'white');
+    }
+  }
+}

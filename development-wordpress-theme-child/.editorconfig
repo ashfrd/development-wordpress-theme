@@ -1,0 +1,27 @@
+
+# Editor configuration for the WordPress theme.
+root = true
+
+# Default formatting.
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+trim_trailing_whitespace = true
+insert_final_newline = true
+
+# WordPress PHP coding standards.
+[*.php]
+indent_style = tab
+indent_size = tab
+tab_width = 4
+
+# JavaScript, JSON, SCSS and CSS.
+[*.{js,cjs,mjs,json,scss,css}]
+indent_style = space
+indent_size = 2
+
+# Markdown: preserve trailing whitespace for line breaks.
+[*.md]
+trim_trailing_whitespace = false

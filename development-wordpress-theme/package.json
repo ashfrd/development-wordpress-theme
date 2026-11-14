@@ -1,0 +1,60 @@
+{
+  "name": "development-wordpress-theme",
+  "version": "1.0.0",
+  "description": "WordPress Theme for portfolio",
+  "engines": {
+    "node": "^24.0.0 || ^26.0.0"
+  },
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development gulp watch",
+    "build": "cross-env NODE_ENV=production gulp build",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "check": "npm run lint && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ashfrd/development-wordpress-theme.git"
+  },
+  "keywords": [
+    "wordpress",
+    "theme",
+    "acf",
+    "scss",
+    "gulp"
+  ],
+  "author": "Thomas Ashford",
+  "license": "GPL-2.0-or-later",
+  "bugs": {
+    "url": "https://github.com/ashfrd/development-wordpress-theme/issues"
+  },
+  "homepage": "https://github.com/ashfrd/development-wordpress-theme#readme",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not op_mini all"
+  ],
+  "dependencies": {
+    "@glidejs/glide": "^3.6.0",
+    "bootstrap": "^5.3.9"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "autoprefixer": "^10.6.2",
+    "cross-env": "^7.0.3",
+    "cssnano": "^6.0.1",
+    "eslint": "^10.15.0",
+    "globals": "^17.14.0",
+    "gulp": "^5.0.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^9.0.1",
+    "gulp-sass": "^6.0.1",
+    "gulp-sass-glob": "^1.1.0",
+    "gulp-terser": "^2.1.0",
+    "postcss": "^8.5.33",
+    "postcss-preset-env": "^9.3.0",
+    "prettier": "^3.10.1",
+    "sass": "^1.108.2"
+  }
+}

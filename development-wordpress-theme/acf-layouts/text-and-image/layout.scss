@@ -1,0 +1,31 @@
+.text-and-image {
+  padding: 3rem 0;
+
+  @include media-breakpoint-up(lg) {
+    padding: 5rem 0;
+  }
+
+  &__content {
+    margin-bottom: 2rem;
+
+    @include media-breakpoint-up(md) {
+      margin-bottom: 0;
+    }
+  }
+
+  &__text > :last-child {
+    margin-bottom: 0;
+  }
+
+  &__button {
+    margin-top: 2rem;
+  }
+
+  &__image {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  @include layout-colour-modifiers;
+}

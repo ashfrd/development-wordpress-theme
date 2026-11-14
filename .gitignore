@@ -1,0 +1,26 @@
+
+# Track only the parent and child development themes.
+/*
+!/.gitignore
+!/README.md
+!/LICENSE
+!/development-wordpress-theme/
+!/development-wordpress-theme-child/
+
+# Composer dependencies.
+/development-wordpress-theme/vendor/
+/development-wordpress-theme-child/vendor/
+
+# Node dependencies.
+**/node_modules/
+
+# Local environment files.
+**/.env
+**/.env.*
+**/.DS_Store
+**/.vscode/
+**/.idea/
+
+# Logs and source maps.
+**/*.log
+**/*.map

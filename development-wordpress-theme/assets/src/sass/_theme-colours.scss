@@ -1,0 +1,19 @@
+// Mirrors the ACF colour picker palette and background/text colour selects.
+$theme-colours: (
+  'white': #ffffff,
+  'yellow': #ffda22,
+  'red': #ff4d3d,
+  'blue': #6e96ea,
+  'black': #1f1a14,
+  'grey': #f4f1eb
+);
+
+// Readable text colour when a palette background is selected.
+$theme-colour-contrast: (
+  'white': map-get($theme-colours, 'black'),
+  'yellow': map-get($theme-colours, 'black'),
+  'red': map-get($theme-colours, 'white'),
+  'black': map-get($theme-colours, 'white'),
+  'grey': map-get($theme-colours, 'black'),
+  'blue': map-get($theme-colours, 'white')
+);

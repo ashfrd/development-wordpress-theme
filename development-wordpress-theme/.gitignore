@@ -1,0 +1,26 @@
+
+# Dependencies
+node_modules/
+/vendor/
+
+# Operating system files
+.DS_Store
+**/.DS_Store
+._*
+__MACOSX/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Editor-specific settings
+.vscode/
+.idea/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Generated source maps
+assets/build/**/*.map
