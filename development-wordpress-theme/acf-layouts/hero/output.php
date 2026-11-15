@@ -16,7 +16,18 @@ $image_id = is_array( $image ) ? (int) $image['ID'] : 0;
 	<?php if ( 'centered_bg' === $layout ) : ?>
 
 		<?php if ( $image_id ) : ?>
-			<?php echo wp_get_attachment_image( $image_id, 'full', false, array( 'class' => 'hero__bg', 'loading' => 'eager', 'alt' => '' ) ); ?>
+			<?php
+			echo wp_get_attachment_image(
+				$image_id,
+				'full',
+				false,
+				array(
+					'class'   => 'hero__bg',
+					'loading' => 'eager',
+					'alt'     => '',
+				)
+			);
+			?>
 		<?php endif; ?>
 
 		<div class="container hero__inner">
@@ -40,7 +51,17 @@ $image_id = is_array( $image ) ? (int) $image['ID'] : 0;
 				</div>
 				<div class="col-lg-6 hero__media">
 					<?php if ( $image_id ) : ?>
-						<?php echo wp_get_attachment_image( $image_id, 'full', false, array( 'class' => 'hero__image', 'loading' => 'eager' ) ); ?>
+						<?php
+						echo wp_get_attachment_image(
+							$image_id,
+							'full',
+							false,
+							array(
+								'class'   => 'hero__image',
+								'loading' => 'eager',
+							)
+						);
+						?>
 					<?php endif; ?>
 				</div>
 			</div>
@@ -59,7 +80,17 @@ $image_id = is_array( $image ) ? (int) $image['ID'] : 0;
 			<?php if ( $image_id ) : ?>
 				<div class="row justify-content-center">
 					<div class="col-lg-10 hero__media">
-						<?php echo wp_get_attachment_image( $image_id, 'full', false, array( 'class' => 'hero__image', 'loading' => 'eager' ) ); ?>
+						<?php
+						echo wp_get_attachment_image(
+							$image_id,
+							'full',
+							false,
+							array(
+								'class'   => 'hero__image',
+								'loading' => 'eager',
+							)
+						);
+						?>
 					</div>
 				</div>
 			<?php endif; ?>

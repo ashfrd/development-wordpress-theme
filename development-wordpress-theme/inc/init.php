@@ -13,5 +13,5 @@ require_once $include_dir . 'theme/acf-layouts.php';
 require_once $include_dir . 'theme/ajax-loaders.php';
 require_once $include_dir . 'theme/asset-loader.php';
 
-// Load any custom functions
+/* Load any custom functions */
 require_once $include_dir . 'theme/functions.php';

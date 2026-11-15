@@ -31,7 +31,17 @@ $classes = array_merge( array( 'text-and-image', $modifier ), $colours['classes'
 			</div>
 			<div class="col-md-6 text-and-image__media<?php echo $is_reversed ? ' order-md-1' : ''; ?>">
 				<?php if ( $image_id ) : ?>
-					<?php echo wp_get_attachment_image( $image_id, 'full', false, array( 'class' => 'text-and-image__image', 'loading' => 'lazy' ) ); ?>
+					<?php
+					echo wp_get_attachment_image(
+						$image_id,
+						'full',
+						false,
+						array(
+							'class'   => 'text-and-image__image',
+							'loading' => 'lazy',
+						)
+					);
+					?>
 				<?php endif; ?>
 			</div>
 		</div>

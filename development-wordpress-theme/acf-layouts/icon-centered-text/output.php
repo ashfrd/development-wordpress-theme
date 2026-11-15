@@ -18,7 +18,17 @@ $styles  = $colours['styles'];
 			<div class="col-lg-9 icon-centered-text__content">
 				<?php if ( $image_id ) : ?>
 					<div class="icon-centered-text__icon">
-						<?php echo wp_get_attachment_image( $image_id, 'full', false, array( 'class' => 'icon-centered-text__image', 'loading' => 'lazy' ) ); ?>
+						<?php
+						echo wp_get_attachment_image(
+							$image_id,
+							'full',
+							false,
+							array(
+								'class'   => 'icon-centered-text__image',
+								'loading' => 'lazy',
+							)
+						);
+						?>
 					</div>
 				<?php endif; ?>
 				<?php if ( $text ) : ?>
