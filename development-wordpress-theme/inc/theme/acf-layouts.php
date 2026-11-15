@@ -1,17 +1,26 @@
 <?php
 /**
+ * Helpers for rendering ACF flexible content layouts.
+ *
+ * @package development-wordpress-theme
+ */
+
+/**
  * Convert an ACF layout name to its template directory.
  *
  * Handles existing layout names containing underscores or ampersands.
+ *
+ * @param string $layout ACF flexible content layout name.
+ * @return string Sanitized template directory name.
  */
 function developmenttheme_acf_layout_folder( $layout ) {
-    $folder = str_replace(
-        array( '_&_', '_' ),
-        array( '-and-', '-' ),
-        $layout
-    );
+	$folder = str_replace(
+		array( '_&_', '_' ),
+		array( '-and-', '-' ),
+		$layout
+	);
 
-    return sanitize_title( $folder );
+	return sanitize_title( $folder );
 }
 
 /**
@@ -24,31 +33,42 @@ function developmenttheme_acf_layout_folder( $layout ) {
  * @return array{classes: string[], styles: string[]}
  */
 function developmenttheme_layout_colour_settings( $base, $default_bg = 'yellow', $default_txt = 'black' ) {
-  $bg  = get_sub_field( 'background_colour' ) ?: $default_bg;
-  $txt = get_sub_field( 'text_colour' ) ?: $default_txt;
+	$bg  = get_sub_field( 'background_colour' );
+	$txt = get_sub_field( 'text_colour' );
 
-  $classes = array();
-  $styles  = array();
+	if ( ! $bg ) {
+		$bg = $default_bg;
+	}
 
-  if ( 'custom' === $bg ) {
-    $custom_bg = sanitize_hex_color( (string) get_sub_field( 'custom_background_colour' ) );
-    if ( $custom_bg ) {
-      $styles[] = 'background-color:' . $custom_bg;
-    }
-  } elseif ( in_array( $bg, array( 'white', 'yellow', 'red', 'blue', 'black', 'grey' ), true ) ) {
-    $classes[] = $base . '--bg-' . $bg;
-  }
+	if ( ! $txt ) {
+		$txt = $default_txt;
+	}
 
-  if ( 'custom' === $txt ) {
-    $custom_txt = sanitize_hex_color( (string) get_sub_field( 'custom_text_colour' ) );
-    if ( $custom_txt ) {
-      $styles[] = 'color:' . $custom_txt;
-    }
-  } elseif ( in_array( $txt, array( 'white', 'black' ), true ) ) {
-    $classes[] = $base . '--text-' . $txt;
-  }
+	$classes = array();
+	$styles  = array();
 
-  return array( 'classes' => $classes, 'styles' => $styles );
+	if ( 'custom' === $bg ) {
+		$custom_bg = sanitize_hex_color( (string) get_sub_field( 'custom_background_colour' ) );
+		if ( $custom_bg ) {
+			$styles[] = 'background-color:' . $custom_bg;
+		}
+	} elseif ( in_array( $bg, array( 'white', 'yellow', 'red', 'blue', 'black', 'grey' ), true ) ) {
+		$classes[] = $base . '--bg-' . $bg;
+	}
+
+	if ( 'custom' === $txt ) {
+		$custom_txt = sanitize_hex_color( (string) get_sub_field( 'custom_text_colour' ) );
+		if ( $custom_txt ) {
+			$styles[] = 'color:' . $custom_txt;
+		}
+	} elseif ( in_array( $txt, array( 'white', 'black' ), true ) ) {
+		$classes[] = $base . '--text-' . $txt;
+	}
+
+	return array(
+		'classes' => $classes,
+		'styles'  => $styles,
+	);
 }
 
 /**
@@ -59,26 +79,29 @@ function developmenttheme_layout_colour_settings( $base, $default_bg = 'yellow',
  * @return string Attribute string with a leading space, or an empty string.
  */
 function developmenttheme_layout_settings_attrs( $styles = array() ) {
-  $attrs = '';
-  $id    = sanitize_html_class( (string) get_sub_field( 'custom_id' ) );
+	$attrs = '';
+	$id    = sanitize_html_class( (string) get_sub_field( 'custom_id' ) );
 
-  if ( '' !== $id ) {
-    $attrs .= ' id="' . esc_attr( $id ) . '"';
-  }
+	if ( '' !== $id ) {
+		$attrs .= ' id="' . esc_attr( $id ) . '"';
+	}
 
-  foreach ( array( 'padding_top' => 'padding-top', 'padding_bottom' => 'padding-bottom' ) as $field => $property ) {
-    $value = get_sub_field( $field );
+	foreach ( array(
+		'padding_top'    => 'padding-top',
+		'padding_bottom' => 'padding-bottom',
+	) as $field => $property ) {
+		$value = get_sub_field( $field );
 
-    if ( is_numeric( $value ) ) {
-      $styles[] = $property . ':' . (float) $value . 'px';
-    }
-  }
+		if ( is_numeric( $value ) ) {
+			$styles[] = $property . ':' . (float) $value . 'px';
+		}
+	}
 
-  if ( $styles ) {
-    $attrs .= ' style="' . esc_attr( implode( ';', $styles ) ) . '"';
-  }
+	if ( $styles ) {
+		$attrs .= ' style="' . esc_attr( implode( ';', $styles ) ) . '"';
+	}
 
-  return $attrs;
+	return $attrs;
 }
 
 
@@ -92,25 +115,25 @@ function developmenttheme_layout_settings_attrs( $styles = array() ) {
  */
 function developmenttheme_render_flexible_layouts( $field = 'flexible_column' ) {
 
-    if ( ! function_exists( 'have_rows' ) || ! have_rows( $field ) ) {
-        return;
-    }
+	if ( ! function_exists( 'have_rows' ) || ! have_rows( $field ) ) {
+		return;
+	}
 
-    while ( have_rows( $field ) ) {
-        the_row();
+	while ( have_rows( $field ) ) {
+		the_row();
 
-        $layout = get_row_layout();
+		$layout = get_row_layout();
 
-        if ( ! is_string( $layout ) || '' === $layout ) {
-            continue;
-        }
+		if ( ! is_string( $layout ) || '' === $layout ) {
+			continue;
+		}
 
-        $folder = developmenttheme_acf_layout_folder( $layout );
+		$folder = developmenttheme_acf_layout_folder( $layout );
 
-        if ( '' === $folder ) {
-            continue;
-        }
+		if ( '' === $folder ) {
+			continue;
+		}
 
-        get_template_part( 'acf-layouts/' . $folder . '/output' );
-    }
+		get_template_part( 'acf-layouts/' . $folder . '/output' );
+	}
 }
